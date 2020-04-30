@@ -10,12 +10,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'image-upload/build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.route('/api/upload').get(controller.sendMessage).post(controller.uploadImage);
 
 app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname + '/image-upload/build/index.html'));
+	res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
 
 const port = process.env.PORT || 5000;

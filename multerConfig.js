@@ -3,7 +3,7 @@ const multer = require('multer');
 // Set storage Engine
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
-		cb(null, './image-upload/public/uploads/');
+		cb(null, './client/public/uploads/');
 	},
 	filename: (req, file, cb) => {
 		cb(null, `image-${Date.now()}.${file.mimetype.split('/')[1]}`);
