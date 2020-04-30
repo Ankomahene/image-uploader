@@ -6,14 +6,22 @@
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "client": "npm start --prefix image-upload",
+    "client-install": "npm install --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix image-upload && npm run build --prefix image-upload"
   },
   "author": "Shadrack",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "concurrently": "^5.2.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "multer": "^1.4.2"
+  },
+  "engines": {
+    "node": "^12.14.1",
+    "npm": "^6.13.4"
   }
 }
